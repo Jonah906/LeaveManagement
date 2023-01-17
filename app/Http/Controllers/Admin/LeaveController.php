@@ -123,12 +123,10 @@ class LeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Leave $leave)
-    {
-        $leaves = Leave::all();
-        // dd($leave);
-        // dd($leave);
-        return view('staffleave.show',compact('leave'));
+    public function show()
+    {   
+        // dd($sleaves);
+        // return view('staffleave.show',compact('leave'));
     }
 
     /**
@@ -139,7 +137,8 @@ class LeaveController extends Controller
      */
     public function edit(Leave $leave)
     {
-     
+        // dd($leave);
+
     }
 
     /**

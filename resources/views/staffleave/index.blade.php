@@ -101,17 +101,17 @@
                                         <td>{{$leave->start_date}}</td>
                                         <td>{{$leave->end_date}}</td>
                                         <td>{{$leave->reason}}</td>
-                                        <td style="color: #1abc9c"><strong>{{$leave->hod_status}}</strong></td>
+                                        <td style="color: #f1c40f"><strong>{{$leave->hod_status}}</strong></td>
                                         <td style="color: #1abc9c"><strong>{{$leave->admin_status}}</strong></td>
                                         <td>
-                                            {{-- @can('manage-staff') --}}
-                                                {{-- <a href="{{route('leaves.show', $leave->id)}}" class="btn btn-warning btn-sm">View</a> --}}
+                                            @can('manage-staff')
+                                                <a href="{{route('staffleave.edit',$leave->id)}}" class="btn btn-warning btn-sm">Edit</a>
                                                 {{-- <button type="button" class="btn  btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalCenter">View</button> --}}
-                                            {{-- @endcan --}}
+                                            @endcan
                                             {{-- <button type="button" class="btn  btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Edit</button> --}}
                                             {{-- <a href="{{route('leaves.edit', $leave->id)}}" class="btn btn-primary btn-sm">Edit</a> --}}
 
-                                            <a onclick="handleDelete({{ $leave->id }})" class="btn btn-danger btn-sm" style="color:white;">Delete</a>
+                                            {{-- <a onclick="handleDelete({{ $leave->id }})" class="btn btn-warning btn-sm" style="color:white;">view</a> --}}
                                             {{-- <a onclick="handleDelete({{ $leave->id }})" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalLive" style="color: white">Delete</a> --}}
                                            
                                         </td>

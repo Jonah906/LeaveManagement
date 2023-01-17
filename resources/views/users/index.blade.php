@@ -75,7 +75,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone </th>
-                                        <th>Department</th>
+                                        {{-- <th>Department</th> --}}
                                         <th>Position</th>
                                         <th>Roles</th>
                                         {{-- <th>Image</th> --}}
@@ -89,7 +89,7 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->phone}}</td>
-                                        <td>{{$user->department}}</td>
+                                        {{-- <td>{{$user->departments->name}}</td> --}}
                                         <td>{{$user->position}}</td>
                                         <td>{{ implode('. ' , $user->roles()->get()->pluck('name')->toArray())}}</td>
                                         <td>

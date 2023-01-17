@@ -73,13 +73,13 @@
                         <div class="table-responsive">
                         
                             <table class="table table-hover">
-                                {{-- <tr>
+                                <tr>
                                     <th>Name:</th>
-                                    <td>{{$leave->name}}</td> 
-                                </tr> --}}
+                                    <td>{{$leave->email}}</td> 
+                                </tr>
                                 <tr>
                                     <th>Email:</th>
-                                    <td>{{$leave->email}}</td> 
+                                    {{-- <td>{{$leave->email}}</td>  --}}
                                 </tr>
                                 {{-- <tr>
                                     <th>Mobile Number:</th>

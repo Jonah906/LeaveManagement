@@ -47,39 +47,54 @@
                             </div>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href=""><i class="feather icon-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{route('leavetypes.index')}}">LeaveType Management</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('profiles.index')}}">User Management</a></li>
                             </ul>
                         </div>
+                        @include('partials.flash-message')
                     </div>
                 </div>
             </div>
             <!-- [ breadcrumb ] end -->
             <!-- [ Main Content ] start -->
             <!-- [ Hover-table ] start -->
-            <div class="col-md-4">
-                <h5 class="m-b-15">EDIT LEAVETYPE <span class="float-right f-13 text-muted"><a href="{{route('leavetype.index')}}" class="btn btn-sm btn-primary">Back</a></span></h5>
-                {{-- <h5 class="mt-5">EDIT DEPARTMENT</h5> --}}
-                {{-- <a href="{{route('departments.index')}}" class="btn btn-primary btn-small" style="margin-left: 600px">Back</a> --}}
-                <hr>
-                <form class="needs-validation" novalidate method="post" action="{{route('leavetypes.update',$leavetype->id)}}">
-                    @csrf
-                    @method('PUT')
-                    <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                            <label for="validationTooltip01">Department name</label>
-                            <input type="text" class="form-control  @error('leavename') is-invalid @enderror" name="leavename" id="leavename" placeholder="Leave Name" value="{{$leavetype->leavename}}">
-                            @error('leavename')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+            <div class="col-md-6">
+                <h5>{{Auth::user()->name}} profile</h5>
+                <div class="card">
+                    <div class="card-header">
+                         <span class="d-block m-t-4"><a href="{{route('home')}}" class="btn btn-primary btn-sm">Back Home</a></span>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                        
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Name:</th>
+                                    <td>{{ Auth::user()->name }}</td> 
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>{{ Auth::user()->email }}</td> 
+                                </tr>
+                                <tr>
+                                    <th>Mobile Number:</th>
+                                    <td>{{ Auth::user()->phone }}</td> 
+                                </tr>
+                                <tr>
+                                    <th>Department:</th>
+                                    <td>{{ Auth::user()->department }}</td> 
+                                </tr>
+                                <tr>
+                                    <th>Position:</th>
+                                    <td>{{ Auth::user()->position }}</td> 
+                                </tr>    
+                            </table> 
+
+                            <a href="{{ route('profiles.edit', Auth::user()->id) }}" class="btn btn-primary">
+                                <i class="mdi mdi-account-settings mr-1"></i> Edit Profile
+                            </a>
                         </div>
-                       
                     </div>
-                    <div class="py-4">
-                        <button class="btn  btn-primary" type="submit">Update</button>
-                    </div>
-                </form>
+                </div>
             </div>
             <!-- [ Hover-table ] end -->         
            <!-- [ Main Content ] end -->

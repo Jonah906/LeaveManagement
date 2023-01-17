@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\LeaveController;
 use App\Http\Controllers\Admin\PayrollController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\LeaveTypeController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Staff\StaffLeaveController;
@@ -33,6 +34,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::resource('users', UsersController::class);
 Route::resource('user',UserController::class)->middleware('can:manage-users');
 Route::resource('leaves',LeaveController::class);
+Route::resource('profiles',ProfileController::class);
 Route::resource('payrolls',PayrollController::class);
 Route::resource('departments',DepartmentController::class)->middleware('can:manage-users');
 Route::resource('leavetypes',LeaveTypeController::class)->middleware('can:manage-users');
@@ -44,6 +46,7 @@ Route::get('/declined/{id}',[AdminStatusController::class,'declined']);
 
 Route::get('/hodapprove/{id}',[ManagerStatusController::class,'hodapprove']);
 Route::get('/hoddeclined/{id}',[ManagerStatusController::class,'hoddeclined']);
+
 
 
 

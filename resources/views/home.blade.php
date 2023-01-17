@@ -55,7 +55,7 @@
             </div>
             <!-- [ breadcrumb ] end -->
             <!-- [ Main Content ] start -->
-            {{-- @include('partials.main') --}}
+            @include('partials.main')
             <!-- [ Main Content ] end -->
         </div>
     </div>

@@ -174,9 +174,16 @@
                             </form>
                         </div>
                         <ul class="pro-body">
-                            <li><a href="user-profile.html" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
-                            <li><a href="email_inbox.html" class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li>
-                            <li><a href="auth-signin.html" class="dropdown-item"><i class="feather icon-lock"></i> Lock Screen</a></li>
+                            <li><a href="{{route("profiles.index")}}" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); 
+                                     document.getElementById('logout-form').submit();" class="dropdown-item"><i class="feather icon-lock"></i> Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                            {{-- <li><a href="email_inbox.html" class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li> --}}
                         </ul>
                     </div>
                 </div>

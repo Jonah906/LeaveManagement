@@ -29,7 +29,8 @@ class UserController extends Controller
     {
         $department =  Department::all();
         $roles = Role::all();
-        $users = User::all();
+        $users = User::with(['departments'])->get();
+        // dd($users);
         $user = User::all();
         $state = State::all();
         $localgvt = Lga::all();
@@ -185,4 +186,5 @@ class UserController extends Controller
         $danger = 'User Deleted Successfully';
         return redirect(route('user.index'))->with('danger', $danger);
     }
+  
 }

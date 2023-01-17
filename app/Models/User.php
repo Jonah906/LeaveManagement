@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Role;
+use App\Models\Department;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -37,6 +38,9 @@ class User extends Authenticatable
 
 
     ];
+    public function departments(){
+        return $this->BelongsTo(Department::class,'department','id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -76,4 +80,5 @@ class User extends Authenticatable
        }
         return false;
     }
+    
 }

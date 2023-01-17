@@ -100,13 +100,13 @@
                                         <td>{{$leave->start_date}}</td>
                                         <td>{{$leave->end_date}}</td>
                                         <td>{{$leave->reason}}</td>
-                                        <td style="color: #1abc9c"><strong>{{$leave->hod_status}}</strong></td>
-                                        <td style="color: #1abc9c"><strong>{{$leave->admin_status}}</strong></td>
+                                        <td  style="color: #1abc9c"><strong>{{$leave->hod_status}}</strong></td>
+                                        <td id="admin"><strong>{{$leave->admin_status}}</strong></td>
 
 
                                         <td>
-                                            <a href="{{ url('approved',$leave->id) }}" class="btn btn-sm btn-primary">Approve</a>
-                                            <a href="{{ url('declined',$leave->id) }}" class="btn btn-sm btn-danger">Decline</a>
+                                            <a href="{{ url('approved',$leave->id) }}" id="approve" class="btn btn-sm btn-primary">Approve</a>
+                                            <a href="{{ url('declined',$leave->id) }}" id="declined" class="btn btn-sm btn-danger">Decline</a>
 
                                             {{-- {{ url('accept', $issue->id) }} --}}
                                             {{-- @can('manage-staff')
@@ -487,7 +487,7 @@
        
     </div>
 @endsection
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 @section('scripts')
     <script>
         function handleDelete(id)
@@ -496,5 +496,26 @@
             form.action = '/user/' + id
             $('#exampleModalLive').modal('show')
         }
+
+        //  for (var i = 0; i < 100; i++) {
+        //     document.querySelectorAll("#approve")[i].addEventListener("click", function(){
+        //        document.querySelector("#admin").style.color = "#1abc9c";
+        //     });
+        // }
+
+        // $("#approve").on("click", function(e){
+        //     e.preventDefault();
+        //     var approve_id = $(this).val();
+        //     console.log("approve_id");
+        //    $("#admin").css("color","#1abc9c");
+        // //    window.location.reload(100);
+
+        // });
+        // $("#declined").on("click", function(e){
+        //     // e.preventDefault();
+        //    $("#admin").css("color","red");
+        // //    window.location.reload(100);
+        // });
     </script>
+
 @endsection

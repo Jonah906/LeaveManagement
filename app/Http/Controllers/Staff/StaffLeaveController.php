@@ -53,11 +53,10 @@ class StaffLeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Leave $leave)
+    public function show()
     {
-        $leaves = Leave::all();
-        // dd($leaves);
-        return view('staffleave.show',compact('leaves'));
+        // dd($leave);
+        // return view('staffleave.show', compact('leave'));
     }
 
     /**
@@ -66,9 +65,10 @@ class StaffLeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Leave $staffleave)
     {
-        //
+        return view("staffleave.edit",compact("staffleave"));
+
     }
 
     /**
@@ -78,10 +78,25 @@ class StaffLeaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Leave $staffleave)
     {
-        //
-    }
+        //To update the LeaveType
+        $request->validate([
+            'leavedays' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'reason' => 'required',
+            ]);
+    
+        $staffleave->leavedays = $request->input('leavedays');
+        $staffleave->start_date = $request->input('start_date');
+        $staffleave->end_date = $request->input('end_date');
+        $staffleave->reason = $request->input('reason');
+
+    
+        $staffleave->update();
+        return redirect(route('staffleave.index'))->with('status',"Leave Updated Successfully");
+}
 
     /**
      * Remove the specified resource from storage.
